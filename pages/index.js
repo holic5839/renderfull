@@ -5,7 +5,7 @@ const index = () => {
   return (
     <div>
       <ImgBox
-        col="6" 
+        col="3" 
         url={[
           "https://images.kolonmall.com/cms/content/2019/06/-26d7138a-8324-468f-83c4-6e0c35688421.jpg",
           "https://images.kolonmall.com/cms/content/2019/06/-9cd2b553-da79-4304-8c9e-39d54dec1f01.png",

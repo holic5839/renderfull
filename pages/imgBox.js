@@ -17,6 +17,42 @@ const ImgBox = (data) => {
     margin: 0 0 37px 15px;
   `
 
+  const TextWrapper = styled.div`
+    margin: 22px 9px 17px;
+    line-height: normal;
+  `
+
+  const Title = styled.h2`
+    margin: 0;
+    font-size: 19px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 300;
+    color: #1f1f1f;
+  `
+
+  const SubTitle = styled.h3`
+    margin: 0;
+    padding-top: 10px;
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 300;
+    color: #898989;
+  `
+
+  const Label = styled.p`
+    display: inline-block;
+    margin-right: 12px;
+    padding-top: 24px;
+    padding: 0;
+    font-size: 11px;
+    color: #79604c;
+    background: transparent;
+  `
+
   const Image = styled.img`
     width: 100%;
   `
@@ -29,9 +65,11 @@ const ImgBox = (data) => {
         data.setting.contents.map((data) => (
           <ImageWrapper key={`image-wrapper__${data.url}`}>
             <Image src={data.url} />
-            <h2>{data.title}</h2>
-            <h3>{data.subtitle}</h3>
-            <span>{data.label}</span>
+            <TextWrapper>
+              <Title>{data.title}</Title>
+              <SubTitle>{data.subtitle}</SubTitle>
+              <Label>{data.label}</Label>
+            </TextWrapper>
           </ImageWrapper>
       ))}
     </Container>

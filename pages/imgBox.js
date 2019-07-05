@@ -57,12 +57,13 @@ const ImgBox = (data) => {
     width: 100%;
   `
 
+  console.log('데이터', data.contents);
   console.log('설정', data.setting);
 
   return (
     <Container>
       {
-        data.setting.contents.map((data) => (
+        data.contents.map((data) => (
           <ImageWrapper key={`image-wrapper__${data.url}`}>
             <Image src={data.url} />
             <TextWrapper>

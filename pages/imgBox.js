@@ -20,16 +20,16 @@ const ImgBox = (data) => {
   const Image = styled.img`
     width: 100%;
   `
-console.log('설정 \n', data.setting);
+  
   return (
     <Container>
       {
-        data.setting.url.map((image) => (
-          <ImageWrapper key={`image-wrapper__${image}`}>
-            <Image src={`${image}`} />
-            <h2>test</h2>
-            <h3>test</h3>
-            <span>test</span>
+        data.setting.contents.map((data) => (
+          <ImageWrapper key={`image-wrapper__${data.image}`}>
+            <Image src={data.url} />
+            <h2>{data.title}</h2>
+            <h3>{data.subtitle}</h3>
+            <span>{data.label}</span>
           </ImageWrapper>
       ))}
     </Container>

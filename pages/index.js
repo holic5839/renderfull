@@ -4,6 +4,7 @@ import ImgBox from './imgBox';
 const index = () => {
   const setting = {
       col: 3,
+      mobile: true,
       contents: [
         {
           title: "운동복과 일상복의 사이 에슬레저룩",

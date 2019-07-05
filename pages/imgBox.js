@@ -20,12 +20,14 @@ const ImgBox = (data) => {
   const Image = styled.img`
     width: 100%;
   `
-  
+
+  console.log('설정', data.setting);
+
   return (
     <Container>
       {
         data.setting.contents.map((data) => (
-          <ImageWrapper key={`image-wrapper__${data.image}`}>
+          <ImageWrapper key={`image-wrapper__${data.url}`}>
             <Image src={data.url} />
             <h2>{data.title}</h2>
             <h3>{data.subtitle}</h3>

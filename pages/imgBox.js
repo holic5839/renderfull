@@ -71,8 +71,8 @@ const ImgBox = (data) => {
     <Container>
       {
         contents.map((data) => (
-          <ImageWrapper key={`image-wrapper__${data.id}`}>
-            <Image src={data.image.data.full_url} />
+          <ImageWrapper key={`image-wrapper__${data.url}`}>
+            <Image src={data.url} />
             <TextWrapper>
               <Title>{data.title}</Title>
               <SubTitle>{data.subtitle}</SubTitle>

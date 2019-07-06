@@ -2,9 +2,18 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const ImgBox = (data) => {
-  const maxWidth = data.setting.col * 465;
-  const minWidth = data.setting.col * 465;
-  
+  const { setting, contents } = data;
+
+  const col = setting.col ? setting.col : 3;
+  const width = setting.width ? setting.width : 450;
+  const height = setting.height ? setting.height : 612;
+  const gutter = setting.gutter ? setting.gutter : 15;
+
+  const maxWidth = col * (width + gutter);
+  const minWidth = col * (width + gutter);
+
+  // const childStyle = (gutter % 2 === 0) ? '&:nth-of-type(n+1): margin-left: 0;' : '&:nth-of-type(2n+1): margin-left: 0;'; 
+
   const Container = styled.div`
     margin: 0 auto;
     max-width: ${maxWidth}px;
@@ -12,9 +21,10 @@ const ImgBox = (data) => {
   `
   const ImageWrapper = styled.div`
     display: inline-block;
-    width: 450px;
-    height: 620px;
-    margin: 0 0 37px 15px;
+    width: ${width}px;
+    height: ${height}px;
+    margin: 0 0 37px ${gutter}px;
+    
   `
 
   const TextWrapper = styled.div`
@@ -57,13 +67,13 @@ const ImgBox = (data) => {
     width: 100%;
   `
 
-  console.log('데이터', data.contents);
-  console.log('설정', data.setting);
+  console.log('데이터', contents);
+  console.log('설정', setting);
 
   return (
     <Container>
       {
-        data.contents.map((data) => (
+        contents.map((data) => (
           <ImageWrapper key={`image-wrapper__${data.url}`}>
             <Image src={data.url} />
             <TextWrapper>

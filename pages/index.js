@@ -3,7 +3,9 @@ import ImgBox from './imgBox';
 
 const index = () => {
   const setting = {
-      col: 3,    
+    col: 4,
+    width: 300,
+    gutter: 14,
   };
 
   const contents = [

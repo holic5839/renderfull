@@ -1,16 +1,14 @@
 import React from 'react';
 import ImgBox from './imgBox';
-import fetch from 'isomorphic-unfetch';
+// import fetch from 'isomorphic-unfetch';
 
 const Index = (props) => {
   // const { col, width, gutter } = props.settings.data[0];
   // const contents = props.contents.data;
   const setting = {
-    col: 3,
-    width: 450,
-    gutter: 15,
+    
   };
-  console.log(props);
+
   const contents = [
     {
       title: "운동복과 일상복의 사이 에슬레저룩",

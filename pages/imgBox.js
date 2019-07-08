@@ -12,8 +12,6 @@ const ImgBox = (data) => {
   const maxWidth = col * (width + gutter);
   const minWidth = col * (width + gutter);
 
-  // const childStyle = (gutter % 2 === 0) ? '&:nth-of-type(n+1): margin-left: 0;' : '&:nth-of-type(2n+1): margin-left: 0;'; 
-
   const Container = styled.div`
     margin: 0 auto;
     max-width: ${maxWidth}px;

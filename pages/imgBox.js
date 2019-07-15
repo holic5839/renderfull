@@ -1,9 +1,23 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const TextWrapper = styled.div`
   margin: 22px 9px 17px;
   line-height: normal;
+`;
+const LabelWrapper = styled.div`
+  margin: 0;
+  padding-top: 24px;
+`;
+const BadgeWrapper = styled.div`
+    position: absolute;
+    display: table;
+    top: 10px;
+    left: 10px;
+    width: 48px;
+    height: 48px;
+    background: none;
+    font-size: 0;
 `;
 const Title = styled.h2`
   margin: 0;
@@ -24,17 +38,12 @@ const SubTitle = styled.h3`
   font-weight: 300;
   color: #898989;
 `;
-const Label = styled.p`
+const Label = styled.span`
   display: inline-block;
-  margin-right: 12px;
-  padding-top: 24px;
-  padding: 0;
+  vertical-align: top;
   font-size: 11px;
   color: #79604c;
   background: transparent;
-`;
-const Image = styled.img`
-  width: 100%;
 `;
 const Badge = styled.img`
   display: block;
@@ -47,11 +56,9 @@ const ImgBox = (data) => {
 
   const col = setting.col ? setting.col : 3;
   const width = setting.width ? setting.width : 450;
+  const imageHeight = setting.width ? width * 1.06667 : 480;
   const height = setting.height ? setting.height : 612;
   const gutter = setting.gutter ? setting.gutter : 15;
-
-  const badgeWidth = setting.width ? width * 0.106667 : 48;
-  const badgeHeight = setting.height ? height * 0.106667 : badgeWidth; 
 
   const maxWidth = col * (width + gutter);
   const minWidth = col * (width + gutter);
@@ -61,42 +68,60 @@ const ImgBox = (data) => {
     max-width: ${maxWidth}px;
     min-width: ${minWidth}px;
   `
-  const ImageWrapper = styled.div`
+  const ContentsWrapper = styled.div`
     display: inline-block;
     position: relative;
     width: ${width}px;
     height: ${height}px;
     margin: 0 0 37px ${gutter}px;
+    text-decoration: none;
   `
-
-  const BadgeWrapper = styled.div`
-    position: absolute;
-    display: table;
-    top: 10px;
-    left: 10px;
-    width: ${badgeWidth}px;
-    height: ${badgeHeight}px;
-    background: none;
-    font-size: 0;
+  const Image = styled.div`
+    background-image: url(${props => props.url ? props.url : ''});
+    background-size: cover;
+    background-position: 50%;
+    width: ${width}px;
+    height: ${imageHeight}px;
   `;
+
 
   return (
     <Container>
       {
         contents.map((data) => (
-          <ImageWrapper key={`image-wrapper__${data.url}`}>
-            <Image src={data.url} />
+          <ContentsWrapper as="a" target="_blank" href={data.link} key={`image-wrapper__${data.url}`} rel="noopener noreferrer">
+            {data.url &&
+              <Image url={data.url}/>
+            }
             <TextWrapper>
-              <Title>{data.title}</Title>
-              <SubTitle>{data.subtitle}</SubTitle>
-              <Label>{data.label}</Label>
-              { data.badge &&
+              {data.title &&
+                <Title>{data.title}</Title>
+              }
+              {data.subtitle &&
+                <SubTitle>{data.subtitle}</SubTitle>
+              }
+              <LabelWrapper>
+              {data.label1 &&
+                <Label>{data.label1}
+                {data.label2 &&
+                  <Label>
+                    {!data.label3 &&
+                      <Label>외 1개</Label>
+                    }
+                    {data.label3 &&
+                      <Label>외 2개</Label>
+                    }
+                  </Label>}
+                </Label>
+              }
+              </LabelWrapper>
+              {data.badge &&
                 <BadgeWrapper>
                   <Badge src={data.badge}/>
                 </BadgeWrapper>
               }
             </TextWrapper>
-          </ImageWrapper>
+          </ContentsWrapper>
       ))}
     </Container>
   );

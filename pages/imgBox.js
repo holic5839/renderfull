@@ -54,11 +54,11 @@ const Badge = styled.img`
 const ImgBox = (data) => {
   const { setting, contents } = data;
 
-  const col = setting.col ? setting.col : 3;
-  const width = setting.width ? setting.width : 450;
-  const imageHeight = setting.width ? width * 1.06667 : 480;
-  const height = setting.height ? setting.height : 612;
-  const gutter = setting.gutter ? setting.gutter : 15;
+  const col = setting && setting.col ? setting.col : 3;
+  const width = setting && setting.width ? setting.width : 450;
+  const imageHeight = setting && setting.width ? width * 1.06667 : 480;
+  const height = setting && setting.height ? setting.height : 612;
+  const gutter = setting && setting.gutter ? setting.gutter : 15;
 
   const maxWidth = col * (width + gutter);
   const minWidth = col * (width + gutter);
@@ -88,7 +88,7 @@ const ImgBox = (data) => {
   return (
     <Container>
       {
-        contents.map((data) => (
+        contents && contents.map((data) => (
           <ContentsWrapper as="a" target="_blank" href={data.link} key={`image-wrapper__${data.url}`} rel="noopener noreferrer">
             {data.url &&
               <Image url={data.url}/>

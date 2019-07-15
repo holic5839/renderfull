@@ -53,16 +53,12 @@ const contents = [
 
 const Index = () => {
   const setting = {
-    // 설정값 예시
-    // col: 2, 칼럼 수
-    // width: 300, 이미지 너비
-    // height: 200, 이미지 높이
-    // gutter: 50, 이미지 사이 간격
+    
   };
 
   return (
     <div>
-      <ImgBox setting={setting} contents={contents} />
+      <ImgBox contents={contents} />
     </div>
   );
 };

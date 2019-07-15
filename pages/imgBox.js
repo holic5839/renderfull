@@ -36,6 +36,11 @@ const Label = styled.p`
 const Image = styled.img`
   width: 100%;
 `;
+const Badge = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+`
 
 const ImgBox = (data) => {
   const { setting, contents } = data;
@@ -44,6 +49,9 @@ const ImgBox = (data) => {
   const width = setting.width ? setting.width : 450;
   const height = setting.height ? setting.height : 612;
   const gutter = setting.gutter ? setting.gutter : 15;
+
+  const badgeWidth = setting.width ? width * 0.106667 : 48;
+  const badgeHeight = setting.height ? height * 0.106667 : badgeWidth; 
 
   const maxWidth = col * (width + gutter);
   const minWidth = col * (width + gutter);
@@ -55,10 +63,22 @@ const ImgBox = (data) => {
   `
   const ImageWrapper = styled.div`
     display: inline-block;
+    position: relative;
     width: ${width}px;
     height: ${height}px;
     margin: 0 0 37px ${gutter}px;
   `
+
+  const BadgeWrapper = styled.div`
+    position: absolute;
+    display: table;
+    top: 10px;
+    left: 10px;
+    width: ${badgeWidth}px;
+    height: ${badgeHeight}px;
+    background: none;
+    font-size: 0;
+  `;
 
   return (
     <Container>
@@ -70,6 +90,11 @@ const ImgBox = (data) => {
               <Title>{data.title}</Title>
               <SubTitle>{data.subtitle}</SubTitle>
               <Label>{data.label}</Label>
+              { data.badge &&
+                <BadgeWrapper>
+                  <Badge src={data.badge}/>
+                </BadgeWrapper>
+              }
             </TextWrapper>
           </ImageWrapper>
       ))}

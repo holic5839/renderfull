@@ -2,7 +2,7 @@ import React from 'react';
 import ImgBox from './imgBox';
 // import fetch from 'isomorphic-unfetch';
 
-const Index = (props) => {
+const Index = () => {
   // const { col, width, gutter } = props.settings.data[0];
   // const contents = props.contents.data;
   const setting = {

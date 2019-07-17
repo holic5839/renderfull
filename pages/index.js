@@ -1,5 +1,6 @@
 import React from 'react';
 import ImgBox from './imgBox';
+import MoImgBox from './moImgBox';
 
 const contents = [
   {
@@ -51,14 +52,14 @@ const contents = [
   },
 ];
 
-const Index = () => {
-  const setting = {
-    
-  };
+const setting = {
 
+};
+const Index = () => {
   return (
     <div>
-      <ImgBox contents={contents} />
+      <MoImgBox contents={contents}/>
+      {/* <ImgBox setting={setting} contents={contents} /> */}
     </div>
   );
 };

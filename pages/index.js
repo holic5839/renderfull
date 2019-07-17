@@ -53,12 +53,12 @@ const contents = [
 ];
 
 const setting = {
-
+  
 };
 const Index = () => {
   return (
     <div>
-      <MoImgBox contents={contents}/>
+      <MoImgBox setting={setting} contents={contents}/>
       {/* <ImgBox setting={setting} contents={contents} /> */}
     </div>
   );

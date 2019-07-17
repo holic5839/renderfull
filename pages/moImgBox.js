@@ -9,21 +9,26 @@ const Image = styled.div`
   background-size: cover;
   background-position: 50%;
   width: 100%;
-  height: 106.6667vw;
+  height: ${props => props.productListView === true ? 67 : 106.6667}vw;
 `;
 const ContentsWrapper = styled.div`
-  width: 100%;
+  width: ${props => props.productListView === true ? 48 : 100}%;
+  padding-right: ${props => props.productListView === true ? '1.866' : ''}vw;
+  margin-bottom: ${props => props.productListView === true ? '11.2' : ''}vw;
+  display: block;
+  float: left;
   text-decoration: none;
 `
 const TextWrapper = styled.div`
-  padding: 4.533vw 4.8vw 8.533vw;
+  margin-top: ${props => props.productListView === true ? '2.8vw' : ''};
+  padding: ${props => props.productListView === true ? '0 1.6vw' : '4.533vw 4.8vw 8.533vw'};
   color: #1f1f1f;
   background: #fff;
   overflow: hidden;
 `;
 const Title = styled.div`
   margin-bottom: 0;
-  font-size: 5.066vw;
+  font-size: ${props => props.productListView === true ? 4.533 : 5.066}vw;
   font-weight: 300;
   line-height: 1.2;
   max-height: 2.4em;
@@ -31,7 +36,7 @@ const Title = styled.div`
 `;
 const SubTitle = styled.div`
   margin-top: 1.866vw;
-  font-size: 3.733vw;
+  font-size: ${props => props.productListView === true ? 3.533 : 3.733}vw;
   font-weight: 300;
   line-height: 1.3;
   color: #898989;
@@ -57,12 +62,12 @@ const MoImgBox = (data) => {
   return (
     <Container>
       {contents && contents.map(data =>
-        <ContentsWrapper as="a" target="_blank" href={data.link} key={`image-wrapper__${data.url}`} rel="noopener noreferrer">
-          <Image url={data.url} key={`image__${data.url}`} />
-          <TextWrapper>
-            <Title>{data.title}</Title>
-            <SubTitle>{data.subtitle}</SubTitle>
-            <Label>{data.label1}</Label>
+        <ContentsWrapper productListView={setting.productListView} as="a" target="_blank" href={data.link} key={`image-wrapper__${data.url}`} rel="noopener noreferrer">
+          <Image productListView={setting.productListView} url={data.url} key={`image__${data.url}`} />
+          <TextWrapper productListView={setting.productListView}>
+            <Title productListView={setting.productListView}>{data.title}</Title>
+            <SubTitle productListView={setting.productListView}>{data.subtitle}</SubTitle>
+            <Label productListView={setting.productListView}>{data.label1}</Label>
           </TextWrapper>
         </ContentsWrapper>
       )}

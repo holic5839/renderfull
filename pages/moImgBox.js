@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  
+
 `
 const Image = styled.div`
   background-image: url(${props => props.url ? props.url : ''});
@@ -13,7 +13,7 @@ const Image = styled.div`
 `;
 const ContentsWrapper = styled.div`
   width: ${props => props.productListView === true ? 48 : 100}%;
-  padding-right: ${props => props.productListView === true ? '1.866' : ''}vw;
+  padding: ${props => props.productListView === true ? '0 0.933' : ''}vw;
   margin-bottom: ${props => props.productListView === true ? '11.2' : ''}vw;
   display: block;
   float: left;
@@ -25,6 +25,9 @@ const TextWrapper = styled.div`
   color: #1f1f1f;
   background: #fff;
   overflow: hidden;
+`;
+const LabelWrapper = styled.div`
+  margin-top: 5.866vw;
 `;
 const Title = styled.div`
   margin-bottom: 0;
@@ -45,7 +48,7 @@ const SubTitle = styled.div`
 const Label = styled.span`
   display: inline-block;
   box-sizing: border-box;
-  margin-top: 5.866vw;
+  vertical-align: top;
   margin-right: 3.2vw;
   padding: 0;
   background-color: transparent;
@@ -61,16 +64,37 @@ const MoImgBox = (data) => {
   const { setting, contents } = data;
   return (
     <Container>
-      {contents && contents.map(data =>
-        <ContentsWrapper productListView={setting.productListView} as="a" target="_blank" href={data.link} key={`image-wrapper__${data.url}`} rel="noopener noreferrer">
-          <Image productListView={setting.productListView} url={data.url} key={`image__${data.url}`} />
-          <TextWrapper productListView={setting.productListView}>
-            <Title productListView={setting.productListView}>{data.title}</Title>
-            <SubTitle productListView={setting.productListView}>{data.subtitle}</SubTitle>
-            <Label productListView={setting.productListView}>{data.label1}</Label>
-          </TextWrapper>
-        </ContentsWrapper>
-      )}
+      {
+        contents && contents.map((data) => (
+          <ContentsWrapper productListView={setting.productListView} as="a" target="_blank" href={data.link} key={`image-wrapper__${data.url}`} rel="noopener noreferrer">
+            {data.url &&
+              <Image productListView={setting.productListView} url={data.url}/>
+            }
+            <TextWrapper productListView={setting.productListView}>
+              {data.title &&
+                <Title productListView={setting.productListView}>{data.title}</Title>
+              }
+              {data.subtitle &&
+                <SubTitle productListView={setting.productListView}>{data.subtitle}</SubTitle>
+              }
+              <LabelWrapper>
+              {data.label1 &&
+                <Label>{data.label1}
+                {data.label2 &&
+                  <Label>
+                    {!data.label3 &&
+                      <Label>외 1개</Label>
+                    }
+                    {data.label3 &&
+                      <Label>외 2개</Label>
+                    }
+                  </Label>}
+                </Label>
+              }
+              </LabelWrapper>
+            </TextWrapper>
+          </ContentsWrapper>
+      ))}
     </Container>
   )
 };

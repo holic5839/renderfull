@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "isomorphic-unfetch": "^3.0.0",
+    "json-server": "^0.15.1",
     "next": "^8.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

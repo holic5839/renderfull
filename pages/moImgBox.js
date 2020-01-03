@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+//#region
+
 const Container = styled.div`
 
 `
@@ -59,6 +61,8 @@ const Label = styled.span`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
+
+//#endregion
 
 const MoImgBox = (data) => {
   const { setting, contents } = data;

@@ -1,14 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
+//#region
+
 const TextWrapper = styled.div`
   margin: 22px 9px 17px;
   line-height: normal;
 `;
+
 const LabelWrapper = styled.div`
   margin: 0;
   padding-top: 24px;
 `;
+
 const BadgeWrapper = styled.div`
     position: absolute;
     display: table;
@@ -19,6 +23,7 @@ const BadgeWrapper = styled.div`
     background: none;
     font-size: 0;
 `;
+
 const Title = styled.h2`
   margin: 0;
   font-size: 19px;
@@ -28,6 +33,7 @@ const Title = styled.h2`
   font-weight: 300;
   color: #1f1f1f;
 `;
+
 const SubTitle = styled.h3`
   margin: 0;
   padding-top: 10px;
@@ -38,6 +44,7 @@ const SubTitle = styled.h3`
   font-weight: 300;
   color: #898989;
 `;
+
 const Label = styled.span`
   display: inline-block;
   vertical-align: top;
@@ -45,6 +52,7 @@ const Label = styled.span`
   color: #79604c;
   background: transparent;
 `;
+
 const Badge = styled.img`
   display: block;
   width: 100%;
@@ -84,6 +92,7 @@ const ImgBox = (data) => {
     height: ${imageHeight}px;
   `;
 
+//#endregion
 
   return (
     <Container>

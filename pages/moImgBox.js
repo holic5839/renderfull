@@ -64,8 +64,7 @@ const Label = styled.span`
 
 //#endregion
 
-const MoImgBox = (data) => {
-  const { setting, contents } = data;
+const MoImgBox = ({setting, contents}) => {
   return (
     <Container>
       {

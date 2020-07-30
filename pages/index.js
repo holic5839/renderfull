@@ -2,6 +2,7 @@ import React from 'react';
 // import ImgBox from './imgBox';
 import MoImgBox from './moImgBox';
 import fetch from 'isomorphic-unfetch';
+import Counter from './scvsoft';
 
 const setting = {
   
@@ -14,7 +15,8 @@ const Index = (props) => {
   
   return (  
     <div>
-      <MoImgBox setting={setting} contents={contents}/>
+      <Counter />
+      {/* <MoImgBox setting={setting} contents={contents}/> */}
       {/* <ImgBox setting={setting} contents={contents} /> */}
     </div>
   );
